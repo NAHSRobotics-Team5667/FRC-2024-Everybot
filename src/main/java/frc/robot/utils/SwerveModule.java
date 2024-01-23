@@ -8,17 +8,5 @@ import frc.robot.Constants.DriveConstants;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 public class SwerveModule extends SubsystemBase {
-
-    private final TalonFX driveMotor;
-    private final TalonFX angelMotor;
-
-    private final CANEncoder driveEncoder;
-    private final CANEncoder turningEncoder;
-
-    private final PIDController turningPidController;
-
-    private final AnalogInput absoluteEncoder;
-    private final boolean absoluteEncoderReversed;
-    private final double absoluteEncoderOffsetRad;
-
+    
 }
