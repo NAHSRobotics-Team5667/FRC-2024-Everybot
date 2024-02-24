@@ -16,8 +16,7 @@
         `/drive` - Stores commands for swerve drive.
         `/lights` - STores commands for LED lights.
 
-    `/subsystems` - Stores the subsystem code.
-
+`/subsystems` - Stores the subsystem code.
     `Constants.java` - Stores all of our constant values.
     `Main.java` - Starts the robot (do not change).
     `Robot.java`- Executes from main. Don't mess around with this, use robot container.
