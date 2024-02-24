@@ -5,12 +5,12 @@
 
 `/src` - Robot code.
 
-> `/deploy` - Used to store files on the roborio.
+`/deploy` - Used to store files on the roborio.
     `/modules` - Used to store the yagsl configurations.
     `/pathplanner` - Stores path data for pathplanner.
     `/swervedrive.json` Used to store the yagsl configuration.
 
-> `/java/frc/robot` - Stores the main robot code.
+`/java/frc/robot` - Stores the main robot code.
     `/commands` - Stores the commands for the robot.
         `/intake` - Stores commands for intake.
         `/drive` - Stores commands for swerve drive.
