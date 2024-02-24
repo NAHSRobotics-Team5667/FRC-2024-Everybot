@@ -13,7 +13,36 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+  //Constants used for the shooter.
+  public static class ShooterConstants {
+
+    public static final int topShooter = 10; //TODO: Set the SparkMaxMotor Controller to the specified ID.
+    public static final int bottomShooter = 11; //TOD0: Set the SparkMaxMotor Controller to the specified ID.
+
+
+    
+    // Current limit for launcher and feed wheels
+    public static final int kLauncherCurrentLimit = 80;
+    public static final int kFeedCurrentLimit = 80;
+    
+    // Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels
+    // in reverse
+    public static final double kLauncherSpeed = 1;
+    public static final double kLaunchFeederSpeed = 1;
+    public static final double kIntakeLauncherSpeed = -1;
+    public static final double kIntakeFeederSpeed = -.2;
+    
+    public static final double kLauncherDelay = 1;
+  }
+
+  //Constants used for the LEDs.
+  public static class LedConstants {
+
+  }
+
+  //Constants used for the operator controllers.
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    public static final int driveController = 0;
   }
 }
