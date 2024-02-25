@@ -1,7 +1,7 @@
 {
   "location": {
-    "front": 0,
-    "left": 0
+    "front": -12.047244,
+    "left": 10.11811
   },
   "absoluteEncoderOffset": 0,
   "drive": {
@@ -19,7 +19,7 @@
     "drive": 2.92831021647
   },
   "encoder": {
-    "type": "cancoder",
+    "type": "ctre_mag",
     "id": 12,
     "canbus": null
   },
