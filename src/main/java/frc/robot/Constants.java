@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -18,10 +20,8 @@ public final class Constants {
   public static class ShooterConstants {
 
     public static final int topShooter = 10; //TODO: Set the SparkMaxMotor Controller to the specified ID.
-    public static final int bottomShooter = 11; //TOD0: Set the SparkMaxMotor Controller to the specified ID.
+    public static final int bottomShooter = 11; //TODO: Set the SparkMaxMotor Controller to the specified ID.
 
-
-    
     // Current limit for launcher and feed wheels
     public static final int kLauncherCurrentLimit = 80;
     public static final int kFeedCurrentLimit = 80;
@@ -44,5 +44,22 @@ public final class Constants {
   //Constants used for the operator controllers.
   public static class OperatorConstants {
     public static final int driveController = 0;
+  }
+
+  //Constants used in the swerve subsystem.
+  public static class SwerveConstants {
+    public static final double driveGearRatio = 6.54;
+    public static final double angleGearRatio = 15.43;
+
+    public static final double wheelRadiusInches = 4;
+
+    public static final double driveEncoderResolution = 1;
+    public static final double angleEncoderResolution = 1;
+
+    public static final double driverConversionFactor = 2.92831021647;
+    public static final double driverConversionFactorCalc = ((60.0 * Math.PI * Units.inchesToMeters(wheelRadiusInches)) / driveGearRatio);
+
+    public static final double angelConversionFactor = 23.3311730395;
+    public static final double angelConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
   }
 }
