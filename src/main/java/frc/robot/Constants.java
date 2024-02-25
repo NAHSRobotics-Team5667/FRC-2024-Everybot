@@ -61,5 +61,7 @@ public final class Constants {
 
     public static final double angelConversionFactor = 23.3311730395;
     public static final double angelConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
+
+    public static final double MAX_VELOCITY_METERS = 16;
   }
 }

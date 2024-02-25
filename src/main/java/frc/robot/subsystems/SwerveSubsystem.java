@@ -4,7 +4,18 @@
 
 package frc.robot.subsystems;
 
+import swervelib.SwerveController;
+import swervelib.SwerveDrive;
+import swervelib.math.SwerveMath;
+import swervelib.parser.SwerveControllerConfiguration;
+import swervelib.parser.SwerveDriveConfiguration;
+import swervelib.parser.SwerveParser;
+import swervelib.telemetry.SwerveDriveTelemetry;
+import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
+
 public class SwerveSubsystem {
     
+    private SwerveDrive swerveDrive;
+
     
 }
