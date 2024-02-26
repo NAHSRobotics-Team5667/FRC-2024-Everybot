@@ -44,6 +44,11 @@ public final class Constants {
   //Constants used for the operator controllers.
   public static class OperatorConstants {
     public static final int driveController = 0;
+
+    public static final double LEFT_X_DEADBAND = 0.1;
+    public static final double LEFT_Y_DEADBAND = 0.1;
+    public static final double RIGHT_X_DEADBAND = 0.1;
+    public static final double RIGHT_Y_DEADBAND = 0.1;
   }
 
   //Constants used in the swerve subsystem.
@@ -51,7 +56,7 @@ public final class Constants {
     public static final double driveGearRatio = 6.54;
     public static final double angleGearRatio = 15.43;
 
-    public static final double wheelRadiusInches = 4;
+    public static final double wheelRadiusInches = 4.0;
 
     public static final double driveEncoderResolution = 1;
     public static final double angleEncoderResolution = 1;
@@ -59,9 +64,21 @@ public final class Constants {
     public static final double driverConversionFactor = 2.92831021647;
     public static final double driverConversionFactorCalc = ((60.0 * Math.PI * Units.inchesToMeters(wheelRadiusInches)) / driveGearRatio);
 
-    public static final double angelConversionFactor = 23.3311730395;
-    public static final double angelConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
+    public static final double angleConversionFactor = 23.3311730395;
+    public static final double angleConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
 
     public static final double MAX_VELOCITY_METERS = 16;
+
+    public static final double MAX_ACCELERATION_METERS = 5.0;
+
+    // =======================================================
+    // ====================== PID ============================
+
+    public static final double AUTO_DRIVE_P = 5.0;
+    public static final double AUTO_DRIVE_I = 0;
+    public static final double AUTO_DRIVE_D = 0;
+    public static final double AUTO_DRIVE_F = 0;
+
+    // =======================================================
   }
 }
