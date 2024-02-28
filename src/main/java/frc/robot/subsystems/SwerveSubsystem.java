@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.SwerveConstants;
 
@@ -73,8 +72,6 @@ public class SwerveSubsystem extends SubsystemBase {
         // The encoder resolution per motor revolution is 1 per motor revolution.
 
         //double angleConversionFactor = SwerveMath.calculateDegreesPerSteeringRotation(150.0 / 7.0);
-        double angleConversionFactor = SwerveConstants.angleConversionFactor;
-
         // Motor conversion factor is (PI * WHEEL DIAMETER IN METERS) / (GEAR RATIO *
         // ENCODER RESOLUTION).
         // In this case the wheel diameter is 4 inches, which must be converted to
@@ -86,7 +83,8 @@ public class SwerveSubsystem extends SubsystemBase {
         //         6.75,
         //         1);
 
-        double driveConversionFactor = SwerveConstants.driverConversionFactor;
+        double driveConversionFactor = SwerveMath.calculateMetersPerRotation(Units.inchesToMeters(SwerveConstants.wheelRadiusInches), SwerveConstants.driveGearRatio, SwerveConstants.driveEncoderResolution);
+        double angleConversionFactor = SwerveMath.calculateDegreesPerSteeringRotation(SwerveConstants.angleGearRatio, SwerveConstants.angleEncoderResolution);
 
         System.out.println("[SWERVE DRIVE CONVERSION FACTORS]");
         System.out.println("\tAngle Conversion: " + angleConversionFactor);
@@ -96,7 +94,7 @@ public class SwerveSubsystem extends SubsystemBase {
         // objects being created.
         SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
         try {
-            swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_VELOCITY_METERS);
+            swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_VELOCITY_METERS, angleConversionFactor, driveConversionFactor);
             // Alternative method if you don't want to supply the conversion factor via JSON
             // files.
             // swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed,
