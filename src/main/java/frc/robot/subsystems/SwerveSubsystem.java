@@ -67,34 +67,17 @@ public class SwerveSubsystem extends SubsystemBase {
      * @param directory Directory of swerve drive config files.
      */
     private SwerveSubsystem(File directory) {
-        // Angle conversion factor is 360 / (GEAR RATIO * ENCODER RESOLUTION)
-        // In this case the gear ratio is 150 / 7 motor revolutions per wheel rotation.
-        // The encoder resolution per motor revolution is 1 per motor revolution.
-
-        //double angleConversionFactor = SwerveMath.calculateDegreesPerSteeringRotation(150.0 / 7.0);
-        // Motor conversion factor is (PI * WHEEL DIAMETER IN METERS) / (GEAR RATIO *
-        // ENCODER RESOLUTION).
-        // In this case the wheel diameter is 4 inches, which must be converted to
-        // meters to get meters/second.
-        // The gear ratio is 6.75 motor revolutions per wheel rotation.
-        // The encoder resolution per motor revolution is 1 per motor revolution.
-        // double driveConversionFactor = SwerveMath.calculateMetersPerRotation(
-        //         Units.inchesToMeters(4),
-        //         6.75,
-        //         1);
-
-        double driveConversionFactor = SwerveMath.calculateMetersPerRotation(Units.inchesToMeters(SwerveConstants.wheelRadiusInches), SwerveConstants.driveGearRatio, SwerveConstants.driveEncoderResolution);
         double angleConversionFactor = SwerveMath.calculateDegreesPerSteeringRotation(SwerveConstants.angleGearRatio, SwerveConstants.angleEncoderResolution);
 
         System.out.println("[SWERVE DRIVE CONVERSION FACTORS]");
         System.out.println("\tAngle Conversion: " + angleConversionFactor);
-        System.out.println("\tDrive Conversion: " + driveConversionFactor);
+        System.out.println("\tDrive Conversion: " + SwerveConstants.driverConversionFactor);
 
         // Configure the Telemetry before creating the SwerveDrive to avoid unnecessary
         // objects being created.
-        SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
+        SwerveDriveTelemetry.verbosity = TelemetryVerbosity.NONE;
         try {
-            swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_VELOCITY_METERS, angleConversionFactor, driveConversionFactor);
+            swerveDrive = new SwerveParser(directory).createSwerveDrive(SwerveConstants.MAX_VELOCITY_METERS, angleConversionFactor, SwerveConstants.driverConversionFactor);
             // Alternative method if you don't want to supply the conversion factor via JSON
             // files.
             // swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed,
@@ -140,7 +123,7 @@ public class SwerveSubsystem extends SubsystemBase {
         if (instance == null) {
             instance = new SwerveSubsystem(directory);
         } else {
-            System.out.println("[SWERVE] Instance already initialized");
+            System.out.println("[SWERVE] Instance already initialized.");
         }
     }
 

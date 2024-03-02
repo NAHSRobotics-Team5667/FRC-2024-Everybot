@@ -7,8 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 import org.littletonrobotics.junction.LoggedRobot;
+
+import com.pathplanner.lib.pathfinding.Pathfinding;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,7 +21,6 @@ import org.littletonrobotics.junction.LoggedRobot;
  */
 public class Robot extends LoggedRobot {
   private Command m_autonomousCommand;
-
   private RobotContainer robotContainer;
 
   /**
@@ -27,6 +29,7 @@ public class Robot extends LoggedRobot {
    */
   @Override
   public void robotInit() {
+    Pathfinding.setPathfinder(new LocalADStarAK());
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     robotContainer = new RobotContainer();
@@ -58,6 +61,12 @@ public class Robot extends LoggedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+      m_autonomousCommand = robotContainer.getAutonomousCommand();
+
+    // schedule the autonomous command (example)
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.schedule();
+    }
   }
 
   /** This function is called periodically during autonomous. */

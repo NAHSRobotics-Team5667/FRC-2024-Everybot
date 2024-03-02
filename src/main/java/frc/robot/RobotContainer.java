@@ -10,14 +10,19 @@ import frc.robot.subsystems.SwerveSubsystem;
 
 import java.io.File;
 
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.Filesystem;
-import edu.wpi.first.wpilibj.RobotBase;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathPlannerPath;
+
 //WPILib Package imports.
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.math.MathUtil;
+
 
 public class RobotContainer {
 
@@ -71,4 +76,12 @@ public class RobotContainer {
   private void configureBindings() {
     //TODO: Configure trigger bindings.
   }
+
+  public Command getAutonomousCommand() {
+        //
+        // An example command will be run in autonomous
+        //return null;
+ 
+        return swerveDrive.getAutonomousCommand("Test", true);
+    }
 }

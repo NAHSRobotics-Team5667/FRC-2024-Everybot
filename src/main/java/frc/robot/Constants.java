@@ -61,11 +61,9 @@ public final class Constants {
     public static final double driveEncoderResolution = 1;
     public static final double angleEncoderResolution = 1;
 
-    public static final double driverConversionFactor = 2.92831021647;
-    public static final double driverConversionFactorCalc = ((60.0 * Math.PI * Units.inchesToMeters(wheelRadiusInches)) / driveGearRatio);
+    public static final double driverConversionFactor = 0.048805170276;
 
     public static final double angleConversionFactor = 23.3311730395;
-    public static final double angleConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
 
     public static final double MAX_VELOCITY_METERS = 16;
 
