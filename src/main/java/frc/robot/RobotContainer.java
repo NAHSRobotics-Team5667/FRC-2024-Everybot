@@ -6,7 +6,10 @@ package frc.robot;
 
 //Robot imports.
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.commands.LaunchNote;
+import frc.robot.commands.Shoot;
 
 //Java package imports.
 import java.io.File;
@@ -24,6 +27,7 @@ public class RobotContainer {
 
   // Subsystem Variables.
   SwerveSubsystem swerveDrive;
+  ShooterSubsystem shooter;
 
   private static final CommandXboxController driveController = new CommandXboxController(OperatorConstants.driveController);
 
@@ -60,6 +64,9 @@ public class RobotContainer {
 
         swerveDrive.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedAnglularVelocitySim);
 
+        //Initialize Shooter Subsystem.
+        shooter = new ShooterSubsystem();
+
         configureBindings();
   }
 
@@ -69,7 +76,8 @@ public class RobotContainer {
 
   //Simple terms. This method assigns different commands to different operations to the controls.
   private void configureBindings() {
-    //TODO: Configure trigger bindings.
+        driveController.a().toggleOnTrue(new LaunchNote(shooter));
+        driveController.b().toggleOnTrue(new Shoot(shooter));
   }
 
   public Command getAutonomousCommand() {
