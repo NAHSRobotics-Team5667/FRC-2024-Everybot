@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 7.0
+        "x": 2.868136106642584,
+        "y": 7.009912291429521
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 3.508593683854034,
+        "y": 6.304480757109662
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 6.0
+        "x": 2.831547490255475,
+        "y": 7.481468938246518
       },
       "nextControl": null,
       "isLocked": false,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue - 1 Note Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.188149086493092,
-        "y": 5.121138762835683
+        "x": 3.839999218459977,
+        "y": 5.071608604755672
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.2345051850597528,
-        "y": 5.478383302445618
+        "x": 1.2647271448389068,
+        "y": 5.505754088431254
       },
       "prevControl": {
-        "x": 1.754296841927017,
-        "y": 5.366999375974061
+        "x": 1.784518801706171,
+        "y": 5.394370161959697
       },
       "nextControl": null,
       "isLocked": false,
@@ -55,11 +55,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0,
+    "rotation": -179.67575555778976,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Blue - 1 Note Auto",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

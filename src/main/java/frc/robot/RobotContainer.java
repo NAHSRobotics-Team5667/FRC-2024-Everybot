@@ -85,6 +85,6 @@ public class RobotContainer {
         // An example command will be run in autonomous
         //return null;
  
-        return swerveDrive.getAutonomousCommand("Test", true);
+        return swerveDrive.getAutonomousCommand("Part 1", true);
     }
 }
