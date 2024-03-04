@@ -9,13 +9,11 @@ import static frc.robot.Constants.ShooterConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class Shoot extends Command {
+public class ShootNote extends Command {
   ShooterSubsystem shooter;
 
-  // CANLauncher m_launcher;
-
-  /** Creates a new Shooter. */
-  public Shoot(ShooterSubsystem shooter) {
+  /** Creates a new shoot note command. */
+  public ShootNote(ShooterSubsystem shooter) {
     // save the launcher system internally
     this.shooter = shooter;
 
@@ -23,11 +21,12 @@ public class Shoot extends Command {
     addRequirements(shooter);
   }
 
-  // Called when the command is initially scheduled.
+  // The initialize method is called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // Set launch wheel to speed, keep feed wheel at 0 to let launch wheel spin up.
-    shooter.setLaunchWheel(ShooterConstants.kLauncherSpeed);
+    // Set the wheels to launching speed
+    shooter.setLaunchWheel(-ShooterConstants.kLauncherSpeed);
+    shooter.setFeedWheel(-ShooterConstants.kLaunchFeederSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,17 +37,18 @@ public class Shoot extends Command {
     // of the base class will run.
   }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    // Do nothing when the command ends. The launch wheel needs to keep spinning in order to launch
-  }
-
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // Always return false so the command never ends on it's own. In this project we use a timeout
-    // decorator on the command to end it.
+    // Always return false so the command never ends on it's own. In this project we use the
+    // scheduler to end the command when the button is released.
     return false;
+  }
+
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+    // Stop the wheels when the command ends.
+    shooter.stop();
   }
 }

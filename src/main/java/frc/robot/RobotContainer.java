@@ -8,8 +8,8 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
-import frc.robot.commands.LaunchNote;
-import frc.robot.commands.Shoot;
+import frc.robot.commands.IntakeNote;
+import frc.robot.commands.ShootNote;
 
 //Java package imports.
 import java.io.File;
@@ -76,8 +76,8 @@ public class RobotContainer {
 
   //Simple terms. This method assigns different commands to different operations to the controls.
   private void configureBindings() {
-        driveController.a().toggleOnTrue(new LaunchNote(shooter));
-        driveController.b().toggleOnTrue(new Shoot(shooter));
+        driveController.a().toggleOnTrue(new IntakeNote(shooter));
+        driveController.b().toggleOnTrue(new ShootNote(shooter));
   }
 
   public Command getAutonomousCommand() {
