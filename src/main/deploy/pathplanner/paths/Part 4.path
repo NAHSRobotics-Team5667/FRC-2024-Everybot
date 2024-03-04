@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 7.0
+        "x": 3.31,
+        "y": 5.48
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.868136106642584,
-        "y": 7.009912291429521
+        "x": 3.5,
+        "y": 5.48
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.508593683854034,
-        "y": 6.304480757109662
+        "x": 1.4437834806867724,
+        "y": 5.48
       },
       "prevControl": {
-        "x": 2.831547490255475,
-        "y": 7.481468938246518
+        "x": 1.7087834806867723,
+        "y": 5.44948418613326
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +39,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "Blue 2 Note Auto",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true
