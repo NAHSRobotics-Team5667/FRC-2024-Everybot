@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.util.Units;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -19,8 +17,8 @@ public final class Constants {
   //Constants used for the shooter.
   public static class ShooterConstants {
 
-    public static final int topShooter = 10; //TODO: Set the SparkMaxMotor Controller to the specified ID.
-    public static final int bottomShooter = 11; //TODO: Set the SparkMaxMotor Controller to the specified ID.
+    public static final int topShooter = 10;
+    public static final int bottomShooter = 11;
 
     // Current limit for launcher and feed wheels
     public static final int kLauncherCurrentLimit = 80;
