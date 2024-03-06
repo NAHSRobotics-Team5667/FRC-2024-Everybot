@@ -49,6 +49,19 @@ public final class Constants {
     public static final double RIGHT_Y_DEADBAND = 0.1;
   }
 
+  public static class ClimbConstants {
+    // ==== MOTORS - FALCON 500s ====
+    public static final int RIGHT_CLIMB_ID = 16;
+    public static final int LEFT_CLIMB_ID = 17;
+
+    // ==== ENCODERS - CANCoders ====
+    public static final int RIGHT_CLIMB_ENCODER_ID = 24;
+    public static final int LEFT_CLIMB_ENCODER_ID = 25;
+
+    // ==== RATIOS ====
+    public static final double RATIO_WINCH = 20.25;
+}
+
   //Constants used in the swerve subsystem.
   public static class SwerveConstants {
     public static final double driveGearRatio = 6.54;
