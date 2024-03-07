@@ -10,6 +10,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.ShootNote;
+import frc.robot.commands.SetClimb;
 
 //Java package imports.
 import java.io.File;
@@ -78,6 +79,8 @@ public class RobotContainer {
   private void configureBindings() {
         driveController.a().toggleOnTrue(new IntakeNote(shooter));
         driveController.b().toggleOnTrue(new ShootNote(shooter));
+        driveController.y().toggleOnTrue(new SetClimb());
+
   }
 
   public Command getAutonomousCommand() {
