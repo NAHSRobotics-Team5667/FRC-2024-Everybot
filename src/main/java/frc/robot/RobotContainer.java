@@ -8,6 +8,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.commands.IntakeNote;
 import frc.robot.commands.ShootNote;
 import frc.robot.commands.SetClimb;
@@ -29,6 +30,7 @@ public class RobotContainer {
   // Subsystem Variables.
   SwerveSubsystem swerveDrive;
   ShooterSubsystem shooter;
+  ClimbSubsystem climb;
 
   private static final CommandXboxController driveController = new CommandXboxController(OperatorConstants.driveController);
 
@@ -68,6 +70,8 @@ public class RobotContainer {
         //Initialize Shooter Subsystem.
         shooter = new ShooterSubsystem();
 
+        climb = new ClimbSubsystem();
+
         configureBindings();
   }
 
@@ -80,7 +84,6 @@ public class RobotContainer {
         driveController.a().toggleOnTrue(new IntakeNote(shooter));
         driveController.b().toggleOnTrue(new ShootNote(shooter));
         driveController.y().toggleOnTrue(new SetClimb());
-
   }
 
   public Command getAutonomousCommand() {

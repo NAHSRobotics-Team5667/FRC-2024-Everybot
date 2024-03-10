@@ -51,12 +51,8 @@ public final class Constants {
 
   public static class ClimbConstants {
     // ==== MOTORS - FALCON 500s ====
-    public static final int RIGHT_CLIMB_ID = 16;
-    public static final int LEFT_CLIMB_ID = 17;
-
-    // ==== ENCODERS - CANCoders ====
-    public static final int RIGHT_CLIMB_ENCODER_ID = 24;
-    public static final int LEFT_CLIMB_ENCODER_ID = 25;
+    public static final int RIGHT_CLIMB_ID = 12;
+    public static final int LEFT_CLIMB_ID = 13;
 
     // ==== RATIOS ====
     public static final double RATIO_WINCH = 20.25;

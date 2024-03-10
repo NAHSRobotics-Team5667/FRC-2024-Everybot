@@ -6,8 +6,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import com.ctre.phoenix6.hardware.CANcoder;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimbConstants;
 
@@ -28,7 +26,6 @@ import frc.robot.Constants.ClimbConstants;
  */
 public class ClimbSubsystem extends SubsystemBase {
     private TalonFX m_leftClimb, m_rightClimb; // declaring motors and global scope
-    private CANcoder leftEncoder, rightEncoder; // absolute encoders
     // ========================================================
     // ============= CLASS & SINGLETON SETUP ==================
 
@@ -36,15 +33,11 @@ public class ClimbSubsystem extends SubsystemBase {
 
     private static ClimbSubsystem instance = null;
 
-    private ClimbSubsystem() {
+    public ClimbSubsystem() {
 
         // Initialize Falcon Motors by setting IDs.
         m_leftClimb = new TalonFX(ClimbConstants.LEFT_CLIMB_ID);
         m_rightClimb = new TalonFX(ClimbConstants.RIGHT_CLIMB_ID);
-
-        // Initialize encoders (CANcoders) by setting IDs.
-        leftEncoder = new CANcoder(ClimbConstants.LEFT_CLIMB_ENCODER_ID);
-        rightEncoder = new CANcoder(ClimbConstants.RIGHT_CLIMB_ENCODER_ID);
     }
 
     /*
@@ -63,47 +56,7 @@ public class ClimbSubsystem extends SubsystemBase {
     // ================== MOTOR ACTIONS =======================
 
     public void Distance() {
-
-        rightEncoder.setControl(null);
-        leftEncoder.setControl(null);
-
-        // Invert right one.
         m_rightClimb.setInverted(true);
-
-        // Control the distance for every motor rotation
-
-        // the distance per rotation method just sets up the conversion rate from
-        // encoder rotations to the distance that it travels linearly. e.g. a wheel's
-        // distance per rotation would be its circumference
-
-        // get climb up onto chains
-
-        leftEncoder.setPosition(-1);
-        rightEncoder.setPosition(-1);
-
-        // set rotation distance ^
-
-        // set distances when ready
-        // this is to lift the rbt off the ground
-
-        if (getLeftClimbHeight() == 0) {
-            leftEncoder.setPosition(-1);
-
-            // when rbt reaches 0 height off ground
-            if (getLeftClimbHeight() == 0) {
-                m_leftClimb.set(0);
-            }
-        }
-
-        if (getRightClimbHeight() == 0) {
-            rightEncoder.setPosition(-1);
-
-            // when rbt reaches 0 height off ground
-            if (getRightClimbHeight() == 0) {
-                m_rightClimb.set(0);
-            }
-        }
-
     }
 
     /**
@@ -136,9 +89,8 @@ public class ClimbSubsystem extends SubsystemBase {
         // if you want!
 
         //New one that uses non-absolute so it's continuous - doens't reset to 0
-        double returnValue = (leftEncoder.getPosition().getValueAsDouble() * ClimbConstants.RATIO_WINCH);
+        double returnValue = -1.00;
 
-        //double returnValue = (leftEncoder.getAbsolutePosition().getValueAsDouble() * ClimbConstants.RATIO_WINCH);
         return returnValue;
     }
 
@@ -149,9 +101,8 @@ public class ClimbSubsystem extends SubsystemBase {
         // P: see previous method comment
         
         //same as above
-        double returnValue = (leftEncoder.getPosition().getValueAsDouble() * ClimbConstants.RATIO_WINCH);
+        double returnValue = -1.00;
 
-       //double returnValue = (rightEncoder.getAbsolutePosition().getValueAsDouble() * ClimbConstants.RATIO_WINCH);
         return returnValue;
     }
 

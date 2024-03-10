@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimbSubsystem;
 
@@ -23,32 +24,13 @@ public class SetClimb extends Command {
     // Called when command is initiated/first scheduled
     @Override
     public void initialize() {
-
+        climb.setClimbSpeed(0);
     }
 
     // Called when scheduler runs while the command is scheduled
     @Override
     public void execute() {
-        double positionLeft = climb.getLeftClimbHeight();
-        double positionRight = climb.getRightClimbHeight();
-        int maxClimbHeight = -1;
-
-        if (positionLeft == maxClimbHeight) {
-            climb.setClimbSpeed(0.5);
-        }
-
-        if (positionRight == maxClimbHeight) {
-            climb.setClimbSpeed(0.5);
-        }
-
-        if (positionLeft == 0) {
-            climb.setClimbSpeed(-0.5);
-        }
-
-        if (positionRight == 0) {
-            climb.setClimbSpeed(-0.5);
-        }
-
+        climb.setClimbSpeed(-0.1);
     }
 
     // Called when the command is interruped or ended

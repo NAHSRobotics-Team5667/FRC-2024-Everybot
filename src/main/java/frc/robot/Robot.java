@@ -11,6 +11,8 @@ import org.littletonrobotics.junction.LoggedRobot;
 
 import com.pathplanner.lib.pathfinding.Pathfinding;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -20,6 +22,8 @@ import com.pathplanner.lib.pathfinding.Pathfinding;
 public class Robot extends LoggedRobot {
   private Command m_autonomousCommand;
   private RobotContainer robotContainer;
+
+  private TalonFX motor1 = new TalonFX(12);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -94,6 +98,8 @@ public class Robot extends LoggedRobot {
   public void testInit() {
     //CameraServer.startAutomaticCapture();
 
+    motor1.set(-0.1);
+    
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
   }
