@@ -83,7 +83,7 @@ public class RobotContainer {
   private void configureBindings() {
         driveController.a().toggleOnTrue(new IntakeNote(shooter));
         driveController.b().toggleOnTrue(new ShootNote(shooter));
-        driveController.y().toggleOnTrue(new SetClimb());
+        driveController.y().toggleOnTrue(new SetClimb(climb));
   }
 
   public Command getAutonomousCommand() {

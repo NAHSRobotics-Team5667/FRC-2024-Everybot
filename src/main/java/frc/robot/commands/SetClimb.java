@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * This command should raise the climb as well as drop the climb with a single
@@ -13,11 +14,12 @@ public class SetClimb extends Command {
 
     public ClimbSubsystem climb;
 
-    // * Creates a new Climb. */
-    public SetClimb() {
-        climb = ClimbSubsystem.getInstance();
+    /** Creates a new climb command. */
+    public SetClimb(ClimbSubsystem climb) {
+        // save the launcher system internally
+        this.climb = climb;
 
-        // addRequirement() - prevent two commands from being run at the same time.
+        // indicate that this command requires the launcher system
         addRequirements(climb);
     }
 
