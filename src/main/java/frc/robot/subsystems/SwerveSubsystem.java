@@ -4,9 +4,6 @@
 
 package frc.robot.subsystems;
 
-//NavX Packages.
-import com.kauailabs.navx.frc.AHRS;
-
 //Pathplanner Packages.
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.path.PathConstraints;
@@ -27,8 +24,6 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.util.sendable.Sendable;
-import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -52,7 +47,6 @@ import org.littletonrobotics.junction.Logger;
 //Yagsl Packages.
 import swervelib.SwerveController;
 import swervelib.SwerveDrive;
-import swervelib.math.SwerveMath;
 import swervelib.parser.SwerveControllerConfiguration;
 import swervelib.parser.SwerveDriveConfiguration;
 import swervelib.parser.SwerveParser;
@@ -66,7 +60,6 @@ public class SwerveSubsystem extends SubsystemBase {
 
     private static SwerveSubsystem instance = null; //Singleton Instance.
 
-    private AHRS gyro; //Gyro Object.
 
     // ================= CONSTRUCTORS =========================
 
@@ -570,9 +563,5 @@ public class SwerveSubsystem extends SubsystemBase {
         }
 
         SmartDashboard.putNumber("[DRIVE] Max Velocity", getMaximumVelocity());
-    }
-
-    @Override
-    public void simulationPeriodic() {
     }
 }
