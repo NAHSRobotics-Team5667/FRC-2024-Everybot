@@ -4,14 +4,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.util.Units;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
  * globally (i.e. public static). Do not put anything functional in this class.
  *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
+ * It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
@@ -19,8 +17,8 @@ public final class Constants {
   //Constants used for the shooter.
   public static class ShooterConstants {
 
-    public static final int topShooter = 10; //TODO: Set the SparkMaxMotor Controller to the specified ID.
-    public static final int bottomShooter = 11; //TODO: Set the SparkMaxMotor Controller to the specified ID.
+    public static final int topShooter = 10;
+    public static final int bottomShooter = 11;
 
     // Current limit for launcher and feed wheels
     public static final int kLauncherCurrentLimit = 80;
@@ -51,6 +49,15 @@ public final class Constants {
     public static final double RIGHT_Y_DEADBAND = 0.1;
   }
 
+  public static class ClimbConstants {
+    // ==== MOTORS - FALCON 500s ====
+    public static final int RIGHT_CLIMB_ID = 12;
+    public static final int LEFT_CLIMB_ID = 13;
+
+    // ==== RATIOS ====
+    public static final double RATIO_WINCH = 20.25;
+}
+
   //Constants used in the swerve subsystem.
   public static class SwerveConstants {
     public static final double driveGearRatio = 6.54;
@@ -61,11 +68,9 @@ public final class Constants {
     public static final double driveEncoderResolution = 1;
     public static final double angleEncoderResolution = 1;
 
-    public static final double driverConversionFactor = 2.92831021647;
-    public static final double driverConversionFactorCalc = ((60.0 * Math.PI * Units.inchesToMeters(wheelRadiusInches)) / driveGearRatio);
+    public static final double driverConversionFactor = 0.048805170276;
 
     public static final double angleConversionFactor = 23.3311730395;
-    public static final double angleConversionFactorCalc = (360.00 / (angleGearRatio * angleEncoderResolution));
 
     public static final double MAX_VELOCITY_METERS = 16;
 
@@ -74,7 +79,7 @@ public final class Constants {
     // =======================================================
     // ====================== PID ============================
 
-    public static final double AUTO_DRIVE_P = 5.0;
+    public static final double AUTO_DRIVE_P = 20;
     public static final double AUTO_DRIVE_I = 0;
     public static final double AUTO_DRIVE_D = 0;
     public static final double AUTO_DRIVE_F = 0;

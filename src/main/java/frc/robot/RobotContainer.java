@@ -4,26 +4,33 @@
 
 package frc.robot;
 
-//Code imports.
+//Robot imports.
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.commands.IntakeNote;
+import frc.robot.commands.ShootNote;
+import frc.robot.commands.SetClimb;
 
+//Java package imports.
 import java.io.File;
 
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.wpilibj.Filesystem;
-import edu.wpi.first.wpilibj.RobotBase;
 //WPILib Package imports.
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.math.MathUtil;
+
 
 public class RobotContainer {
 
 
   // Subsystem Variables.
   SwerveSubsystem swerveDrive;
+  ShooterSubsystem shooter;
+  ClimbSubsystem climb;
 
   private static final CommandXboxController driveController = new CommandXboxController(OperatorConstants.driveController);
 
@@ -36,18 +43,18 @@ public class RobotContainer {
     swerveDrive = SwerveSubsystem.getInstance();
 
     // Real drive command
-        Command driveFieldOrientedAnglularVelocity = swerveDrive.driveCommand(
-                () -> MathUtil.applyDeadband(driveController.getLeftY(),
-                        OperatorConstants.LEFT_Y_DEADBAND), // X direction
-                // is front
-                () -> MathUtil.applyDeadband(driveController.getLeftX(),
-                        OperatorConstants.LEFT_X_DEADBAND), // Y direction
-                // is left
-                () -> driveController.getRightX()); // right stick horizontal value
+    Command driveFieldOrientedAnglularVelocity = swerveDrive.driveCommand(
+        () -> MathUtil.applyDeadband(-driveController.getLeftY(),
+                OperatorConstants.LEFT_Y_DEADBAND), // X direction
+        // is front
+        () -> MathUtil.applyDeadband(-driveController.getLeftX(),
+                OperatorConstants.LEFT_X_DEADBAND), // Y direction
+        // is left
+        () -> -driveController.getRightX()); // right stick horizontal value
 
         // Simulation drive command
         Command driveFieldOrientedAnglularVelocitySim = swerveDrive.simDriveCommand(
-                () -> MathUtil.applyDeadband(driveController.getLeftY(),
+                () -> MathUtil.applyDeadband(-driveController.getLeftY(),
                         OperatorConstants.LEFT_Y_DEADBAND), // X direction
                 // is front
                 () -> MathUtil.applyDeadband(driveController.getLeftX(),
@@ -60,7 +67,12 @@ public class RobotContainer {
 
         swerveDrive.setDefaultCommand(!RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedAnglularVelocitySim);
 
-    configureBindings();
+        //Initialize Shooter Subsystem.
+        shooter = new ShooterSubsystem();
+
+        climb = new ClimbSubsystem();
+
+        configureBindings();
   }
 
   public static CommandXboxController getDriverController() {
@@ -69,6 +81,16 @@ public class RobotContainer {
 
   //Simple terms. This method assigns different commands to different operations to the controls.
   private void configureBindings() {
-    //TODO: Configure trigger bindings.
+        driveController.a().toggleOnTrue(new IntakeNote(shooter));
+        driveController.b().toggleOnTrue(new ShootNote(shooter));
+        driveController.y().toggleOnTrue(new SetClimb(climb));
   }
+
+  public Command getAutonomousCommand() {
+        //
+        // An example command will be run in autonomous
+        //return null;
+ 
+        return swerveDrive.getAutonomousCommand("Part 1", true);
+    }
 }

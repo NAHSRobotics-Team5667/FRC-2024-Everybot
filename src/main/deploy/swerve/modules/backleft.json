@@ -16,7 +16,7 @@
   },
   "conversionFactor": {
     "angle": 23.3311730395,
-    "drive": 2.92831021647
+    "drive": 0.048805170276
   },
   "encoder": {
     "type": "ctre_mag",
@@ -24,7 +24,7 @@
     "canbus": null
   },
   "inverted": {
-    "drive": false,
+    "drive": true,
     "angle": true
   },
   "absoluteEncoderInverted": false

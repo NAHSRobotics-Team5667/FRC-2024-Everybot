@@ -14,18 +14,18 @@ import frc.robot.subsystems.ShooterSubsystem;
 /*This is an example of creating a command as a class. The base Command class provides a set of methods that your command
  * will override.
  */
-public class LaunchNote extends Command {
+public class IntakeNote extends Command {
   ShooterSubsystem shooter;
 
   // CANLauncher m_launcher;
 
   /** Creates a new shoot note command. */
-  public LaunchNote(ShooterSubsystem shooter) {
+  public IntakeNote(ShooterSubsystem shooter) {
     // save the launcher system internally
     this.shooter = shooter;
 
     // indicate that this command requires the launcher system
-    addRequirements(this.shooter);
+    addRequirements(shooter);
   }
 
   // The initialize method is called when the command is initially scheduled.
